@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import lombok.var;
+
 import projeto.neto.projeto_api_rest.Service.UserService;
 import projeto.neto.projeto_api_rest.model.User;
 
@@ -31,16 +31,19 @@ public class UserController {
 
     @GetMapping("/{id}")
     public ResponseEntity<User> findById(@PathVariable Long id){
-        var user = userService.findbyid(id);
+        User user = userService.findbyid(id);
         return ResponseEntity.ok(user);
     }
 
 
     @PostMapping
-    public ResponseEntity<User> create(@RequestBody User userToCreate){
-        var userCreated = userService.create(userToCreate);
-        URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
-        .buildAndExpand(userCreated.getId()).toUri();
+    public ResponseEntity<User> create(@RequestBody User userToCreate) {
+        User userCreated = userService.create(userToCreate);  // Substituindo var por User
+        URI location = ServletUriComponentsBuilder.fromCurrentRequest()
+            .path("/{id}")
+            .buildAndExpand(userCreated.getId())
+            .toUri();
+            
         return ResponseEntity.created(location).body(userCreated);
     }
 

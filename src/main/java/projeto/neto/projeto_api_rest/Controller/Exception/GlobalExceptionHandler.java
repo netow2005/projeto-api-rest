@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import lombok.var;
+
 
 
 
@@ -33,10 +33,10 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(Throwable.class)
-    public ResponseEntity<String> handleUnexpectedException(Throwable unexpectedException){
-        
-        var message = "Unexpected server error, see the logs.";
+    public ResponseEntity<String> handleUnexpectedException(Throwable unexpectedException) {
+
+        String message = "Unexpected server error, see the logs.";
         logger.error(message, unexpectedException);
-        return new ResponseEntity<>( HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<>(message, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }
