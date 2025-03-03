@@ -88,7 +88,7 @@
             <configuration>
                 <archive>
                     <manifestEntries>
-                        <Main-Class>projeto.neto.ProjetoApiRestApplication</Main-Class>
+                        <Main-Class>projeto.neto.projeto_api_rest.ProjetoApiRestApplication</Main-Class>
                     </manifestEntries>
                 </archive>
             </configuration>
